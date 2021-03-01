@@ -114,7 +114,7 @@ Exponents(NUMBER)
 # Square root
 SquareRoot(NUMBER)
 
-# IsPathExist - returns True oк False.
+# IsPathExist - returns True or False.
 IsPathExist(PATH)
 
 # Create dirictory
