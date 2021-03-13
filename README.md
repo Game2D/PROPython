@@ -4,7 +4,7 @@
 #				 #
 #================#
 #				 #
-# VERSION: 1.0.1 #
+# VERSION: 1.0.6 #
 #                #
 #================#
 
@@ -156,36 +156,69 @@ from PROPython import *
 window = PROGame() # We will using PROGame class
 
 # Window
-window.Window(width=500, height=500, window_name="PROGame window") # Creating window
-window.fill(color=(23, 56, 77)) # Fill your window
-window.icon(path="My_Icon.png") # Instead My_Icon.png you need place your path to the icon image (.png, .jpg and others)
+
+# Creating window
+window.Window(width=500, height=500, window_name="PROGame window")
+
+# Fill your window
+window.fill(color=(23, 56, 77))
+
+# Instead My_Icon.png you need place your path to the icon image (.png, .jpg and others)
+window.icon(path="My_Icon.png")
 
 # Drawing
-window.draw_cube(color=(255, 0, 0), pos_x=50, pos_y=52, width=10, height=23) # Drawing cube
-window.draw_circle(color=(123, 76, 32), pos_x=50, pos_y=52, width=10, height=10) # Drawing circle
-window.draw_line(color=(99, 44, 77), pos_x1=10, pos_y1=10, pos_x2=20, pos_y2=20, width=3) # Drawing line
-window.draw_polygon(color=(23, 23, 45), pos_x1=100, pos_y1=120, pos_x2=110, pos_y2=130, pos_x3=130, pos_y3=145, pos_x4=150, pos_y4=150) # Drawing polygon
+
+# Drawing cube
+window.draw_cube(color=(255, 0, 0), pos_x=50, pos_y=52, width=10, height=23) 
+
+# Drawing circle
+window.draw_circle(color=(123, 76, 32), pos_x=50, pos_y=52, width=10, height=10)
+
+# Drawing line
+window.draw_line(color=(99, 44, 77), pos_x1=10, pos_y1=10, pos_x2=20, pos_y2=20, width=3) 
+
+# Drawing polygon
+window.draw_polygon(color=(23, 23, 45), pos_x1=100, pos_y1=120, pos_x2=110, pos_y2=130, pos_x3=130, pos_y3=145, pos_x4=150, pos_y4=150)
 
 # Sounds
-window.play_sound(path="my_sound.mp3") # Instead my_sound.mp3 you need place your path to the sound
+
+# Instead my_sound.mp3 you need place your path to the sound
+window.play_sound(path="my_sound.mp3")
+
 
 # Functions
 def my_func_with_no_brackets():
+
 	cmd("Hello button")
-	window.clear() # Clear all staff (buttons, text_boxes)
-	cmd(window.get_TextBoxs_text()) # It gets all text boxes text!
+	
+	# Clear all staff (buttons, text_boxes)
+	window.clear()
+	
+	# It gets all text boxes text!
+	cmd(window.get_TextBoxs_text()) 
 
 # UI
-window.create_text(text="My text", font=None, size=24, color=(255, 255, 255), pos_x=234, pos_y=234, smoothing=True) # Creating text
-window.create_image(path="My_Image.png", pos_x=300, pos_y=300) # Instead My_Image.png you need place your path to the image (.png, .jpg and others)
-window.create_button(active_color=(0, 0, 0), inactive_color=(0, 10, 0), width=100, height=25, x=400, y=400, text="My Button", size=25, font=None, text_color=(10, 10, 10), outline=None, command=my_func_with_no_brackets) # When you call function you have not have brackets!
-window.create_text_box(width=100, height=25, x=450, y=450, active_color=(0, 255, 0), inactive_color=(255, 0, 0), border_width=2, text_color=(255, 255, 255), font=None, size=25, max_chars=30) # Creating text box
+
+# Creating text
+window.create_text(text="My text", font=None, size=24, color=(255, 255, 255), pos_x=234, pos_y=234, smoothing=True)
+
+# Instead My_Image.png you need place your path to the image (.png, .jpg and others)
+window.create_image(path="My_Image.png", pos_x=300, pos_y=300)
+
+# When you call function you have not have brackets!
+window.create_button(active_color=(0, 0, 0), inactive_color=(0, 10, 0), width=100, height=25, x=400, y=400, text="My Button", size=25, font=None, text_color=(10, 10, 10), outline=None, command=my_func_with_no_brackets)
+
+#  Creating text box
+window.create_text_box(width=100, height=25, x=450, y=450, active_color=(0, 255, 0), inactive_color=(255, 0, 0), border_width=2, text_color=(255, 255, 255), font=None, size=25, max_chars=30)
 
 # Other
-window.create_player(x=60, y=60, speed=2, image="path_to_image/my_img.png", control_type = 2) # Replace path_to_image/my_img.png to path and write "/" and your image name and (.png, .jpg and others)
+
+# Replace path_to_image/my_img.png to path and write "/" and your image name and (.png, .jpg and others)
+window.create_player(x=60, y=60, speed=2, image="path_to_image/my_img.png", control_type = 2)
 
 
-window.Show(FPS=60, debug_mode=False) # Show all
+# Show all
+window.Show(FPS=60, debug_mode=False)
 
 
 # Now we will create Network! (It working on localhost)
@@ -194,47 +227,11 @@ window.Show(FPS=60, debug_mode=False) # Show all
 from PROPython.server import *
 from PROPython.Objects import Player
 
-server = Server(port=9999, max_connections=2, players_server=True, players_instance=[Player(x=50, y=100, speed=2, img="player.png", control_type=2), Player(x=50, y=100, speed=2, img="player.png", control_type=2)]) # Creating server
-server.start() # Starting server
+# Creating server
+server = Server(port=9999, max_connections=2, players_server=True, players_instance=[Player(x=50, y=100, speed=2, img="player.png", control_type=2), Player(x=50, y=100, speed=2, img="player.png", control_type=2)])
 
-# And then in our main script or what you called we will write this
-
-from PROPython import *
-
-window = PROGame() # We will using PROGame class
-
-# Window
-window.Window(width=500, height=500, window_name="PROGame window") # Creating window
-window.fill(color=(23, 56, 77)) # Fill your window
-window.icon(path="My_Icon.png") # Instead My_Icon.png you need place your path to the icon image (.png, .jpg and others)
-
-# Drawing
-window.draw_cube(color=(255, 0, 0), pos_x=50, pos_y=52, width=10, height=23) # Drawing cube
-window.draw_circle(color=(123, 76, 32), pos_x=50, pos_y=52, width=10, height=10) # Drawing circle
-window.draw_line(color=(99, 44, 77), pos_x1=10, pos_y1=10, pos_x2=20, pos_y2=20, width=3) # Drawing line
-window.draw_polygon(color=(23, 23, 45), pos_x1=100, pos_y1=120, pos_x2=110, pos_y2=130, pos_x3=130, pos_y3=145, pos_x4=150, pos_y4=150) # Drawing polygon
-
-# Sounds
-window.play_sound(path="my_sound.mp3") # Instead my_sound.mp3 you need place your path to the sound
-
-# Functions
-def my_func_with_no_brackets():
-	cmd("Hello button")
-	window.clear() # Clear all staff (buttons, text_boxes)
-	cmd(window.get_TextBoxs_text()) # It gets all text boxes text!
-	window.create_network() # Creating network
-
-# UI
-window.create_text(text="My text", font=None, size=24, color=(255, 255, 255), pos_x=234, pos_y=234, smoothing=True) # Creating text
-window.create_image(path="My_Image.png", pos_x=300, pos_y=300) # Instead My_Image.png you need place your path to the image (.png, .jpg and others)
-window.create_button(active_color=(0, 0, 0), inactive_color=(0, 10, 0), width=100, height=25, x=400, y=400, text="My Button", size=25, font=None, text_color=(10, 10, 10), outline=None, command=my_func_with_no_brackets) # When you call function you have not have brackets!
-window.create_text_box(width=100, height=25, x=450, y=450, active_color=(0, 255, 0), inactive_color=(255, 0, 0), border_width=2, text_color=(255, 255, 255), font=None, size=25, max_chars=30) # Creating text box
-
-# Other
-window.create_player(x=60, y=60, speed=2, image="path_to_image/my_img.png", control_type = 2) # Replace path_to_image/my_img.png to path and write "/" and your image name and (.png, .jpg and others)
-
-
-window.Show(FPS=60, debug_mode=False) # Show all
+# Starting server
+server.start()
 
 # Now in console we will first run server.py (or what you called the server script)
 
