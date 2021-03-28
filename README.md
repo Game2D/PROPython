@@ -1,4 +1,4 @@
-# PROPython version 1.0.7
+# PROPython version 1.0.8
 
 # Classes
 
@@ -88,6 +88,8 @@ PROGame()
 	
 	time.delay(seconds=2) # Makes a delay
 
+	# Your current time
+	time.current_time(show="h:m:s") # Also can show: "h:m:s" "m:s" "h:m" "h" "m" "s"    
 
 # Base
 
@@ -219,6 +221,47 @@ PROGame()
 	
 	file.delete()
 	
+# Python sqlite3
+# We added database to PROPython package
+	from PROPython.database import sqlite
+	
+	# Creating sqlite
+	
+	# You can make .sql to .db if you need
+	sql = sqlite(data_name="my_sql_data", type=".sql")
+	
+	# Creating table
+	
+	# You can write what you want instead of the user.
+	# If you don't know sql code you need to learn it otherwise you won't understand anything!
+	
+	sql.create_table(sql_code="""
+		create table if not exists user (
+                name TEXT,
+                password TEXT
+                )
+	""")
+	
+	
+	# Set sql data
+	
+	name = input('Enter your login: ')
+	password = input('Enter your password: ')
+	
+	sql.save_data(data_names=["name", "password"], table_name="user", values=[name, password])
+	
+	# Get sql data
+	
+	result = sql.get_data(sql_code="""
+        	SELECT name, score from user
+        	ORDER by score DESC
+        	""")
+		
+	
+	# Closing data
+	
+	sql.close_data()
+	
 # Now let's move on to the PROGame class (it uses the pygame library)
 # To install the pygame you need to write "pip install pygame" in the command line
 # Now there will be an explanation for all the files and also the code
@@ -320,6 +363,7 @@ PROGame()
 # And in other console we need to write same
 	python main.py
 
+# SQLite3
 # Sockets
 # Pygame
 # PROPython
